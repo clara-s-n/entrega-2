@@ -27,6 +27,9 @@ public class SwagLabsTests {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
+        checkoutPage1 = new CheckoutPage1(driver);
+        //checkoutPage2 = new CheckoutPage2(driver);
+        //checkoutPage3 = new CheckoutPage3(driver);
     }
 
     // Caso de prueba 1
@@ -96,6 +99,36 @@ public class SwagLabsTests {
 
         // Sacar una captura de pantalla
         Utils.takeScreenshot(driver, "verificarEliminarProductoDelCarrito");
+    }
+
+    // Caso de prueba 4
+    @Test
+    public void verificarCheckout1() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Agregar un producto al carrito
+        productsPage.addToCart("backpack");
+
+        // Ver el carrito
+        productsPage.clickCart();
+
+        // Hacer clic en el botón de "Checkout"
+        cartPage.clickCheckout();
+
+        // Verificar que el campo de nombre está presente
+        Assert.assertTrue(checkoutPage1.isFirstNameFieldPresent());
+
+        // Verificar que el campo de apellido está presente
+        Assert.assertTrue(checkoutPage1.isLastNameFieldPresent());
+
+        // Verificar que el campo de código postal está presente
+        Assert.assertTrue(checkoutPage1.isPostalCodeFieldPresent());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarCheckout1");
     }
 
     @After
