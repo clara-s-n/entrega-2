@@ -233,6 +233,29 @@ public class SwagLabsTests {
         Utils.takeScreenshot(driver, "verificarPaginaDeProductos");
     }
 
+    // Caso de prueba 8
+    @Test
+    public void verificarCierreDeSesion() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Hacer click en el botón de menú
+        productsPage.clickMenu();
+
+        // Hacer click en el botón de logout
+        productsPage.clickLogout();
+
+        // Verificar que estamos en la página de login
+        Assert.assertTrue(loginPage.isLoginPage());
+
+        // Verificar que el botón de login está presente
+        Assert.assertTrue(loginPage.isLoginButtonPresent());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarCierreDeSesion");
+    }
 
     @After
     public void tearDown() {

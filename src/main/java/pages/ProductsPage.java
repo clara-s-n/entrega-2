@@ -18,6 +18,8 @@ public class ProductsPage {
     private By addToCartButtonJacket = By.cssSelector("#add-to-cart-sauce-labs-fleece-jacket");
     private By addToCartButtonOnesie = By.cssSelector("#add-to-cart-sauce-labs-onesie");
     private By addToCartButtonRedTShirt = By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div/div[6]/div[2]/div[2]/button");
+    private By menu = By.cssSelector("#react-burger-menu-btn");
+    private By logout = By.cssSelector("#logout_sidebar_link");
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -96,5 +98,15 @@ public class ProductsPage {
             }
         }
         return areDetailsPresent;
+    }
+
+    // Hacer click en el menú
+    public void clickMenu() {
+        driver.findElement(menu).click();
+    }
+
+    // Hacer click en logout
+    public void clickLogout() {
+        driver.findElement(logout).click();
     }
 }
