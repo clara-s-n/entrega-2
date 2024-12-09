@@ -257,6 +257,35 @@ public class SwagLabsTests {
         Utils.takeScreenshot(driver, "verificarCierreDeSesion");
     }
 
+    // Caso de prueba 9
+    @Test
+    public void navegacionEntreTodasLasPaginas() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Ir al carrito
+        productsPage.clickCart();
+
+        // Hacer clic en el botón de checkout
+        cartPage.clickCheckout();
+
+        // Ingresar los datos de envío
+        checkoutPage1.enterFirstName("John");
+        checkoutPage1.enterLastName("Doe");
+        checkoutPage1.enterPostalCode("12345");
+
+        // Ir a la pagina de confirmación
+        checkoutPage1.clickContinue();
+
+        // Hacer clic en el botón de finalizar
+        checkoutPage2.clickFinish();
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "navegacionEntreTodasLasPaginas");
+    }
+
     @After
     public void tearDown() {
         driver.quit();
