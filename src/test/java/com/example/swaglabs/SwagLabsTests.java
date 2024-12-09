@@ -29,7 +29,7 @@ public class SwagLabsTests {
         cartPage = new CartPage(driver);
         checkoutPage1 = new CheckoutPage1(driver);
         checkoutPage2 = new CheckoutPage2(driver);
-        //checkoutPage3 = new CheckoutPage3(driver);
+        checkoutPage3 = new CheckoutPage3(driver);
     }
 
     // Caso de prueba 1
@@ -153,7 +153,7 @@ public class SwagLabsTests {
 
         // Verificar que el resumen de la compra está presente
         Assert.assertTrue(checkoutPage2.isShippingInformationPresent());
-        
+
         // Verificar que el botón de finalizar está presente
         Assert.assertTrue(checkoutPage2.isFinishButtonPresent());
 
@@ -161,6 +161,53 @@ public class SwagLabsTests {
         Utils.takeScreenshot(driver, "verificarCheckout2");
     }
 
+    // Caso de prueba 6
+    @Test
+    public void verificarCheckout3() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Agregar un producto al carrito
+        productsPage.addToCart("backpack");
+
+        // Ver el carrito
+        productsPage.clickCart();
+
+        // Hacer clic en el botón de checkout
+        cartPage.clickCheckout();
+
+        // Ingresar los datos de envío
+        checkoutPage1.enterFirstName("John");
+        checkoutPage1.enterLastName("Doe");
+        checkoutPage1.enterPostalCode("12345");
+        checkoutPage1.clickContinue();
+
+        // Hacer clic en el botón de finalizar
+        checkoutPage2.clickFinish();
+
+        // Verificar que el mensaje de confirmación está presente
+        Assert.assertTrue(checkoutPage3.isConfirmationMessagePresent());
+
+        // Verificar que el botón de volver a la página de productos está presente
+        Assert.assertTrue(checkoutPage3.isBackToProductsButtonPresent());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarCheckout3");
+
+        // Hacer clic en el botón de volver a la página de productos
+        checkoutPage3.clickBackToProducts();
+
+        // Hacer clic en el botón del carrito
+        productsPage.clickCart();
+
+        // Verificar que el carrito está vacío
+        Assert.assertTrue(cartPage.isCartEmpty());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarCarritoVacioCheckout3");
+    }
 
     @After
     public void tearDown() {
