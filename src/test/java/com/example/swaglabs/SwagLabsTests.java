@@ -28,7 +28,7 @@ public class SwagLabsTests {
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
         checkoutPage1 = new CheckoutPage1(driver);
-        //checkoutPage2 = new CheckoutPage2(driver);
+        checkoutPage2 = new CheckoutPage2(driver);
         //checkoutPage3 = new CheckoutPage3(driver);
     }
 
@@ -130,6 +130,37 @@ public class SwagLabsTests {
         // Sacar una captura de pantalla
         Utils.takeScreenshot(driver, "verificarCheckout1");
     }
+
+    // Caso de prueba 5
+    @Test
+    public void verificarCheckout2() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Ir al carrito
+        productsPage.clickCart();
+
+        // Hacer clic en el botón de checkout
+        cartPage.clickCheckout();
+
+        // Ingresar los datos de envío
+        checkoutPage1.enterFirstName("John");
+        checkoutPage1.enterLastName("Doe");
+        checkoutPage1.enterPostalCode("12345");
+        checkoutPage1.clickContinue();
+
+        // Verificar que el resumen de la compra está presente
+        Assert.assertTrue(checkoutPage2.isShippingInformationPresent());
+        
+        // Verificar que el botón de finalizar está presente
+        Assert.assertTrue(checkoutPage2.isFinishButtonPresent());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarCheckout2");
+    }
+
 
     @After
     public void tearDown() {
