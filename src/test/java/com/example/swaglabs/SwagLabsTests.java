@@ -103,7 +103,7 @@ public class SwagLabsTests {
 
     // Caso de prueba 4
     @Test
-    public void verificarCheckout1() {
+    public void navegacionALaPaginaDeCheckout() {
         // Login
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -133,7 +133,7 @@ public class SwagLabsTests {
 
     // Caso de prueba 5
     @Test
-    public void verificarCheckout2() {
+    public void envioDeInformacionCheckout() {
         // Login
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -163,7 +163,7 @@ public class SwagLabsTests {
 
     // Caso de prueba 6
     @Test
-    public void verificarCheckout3() {
+    public void finalizacionDeCompra() {
         // Login
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -208,6 +208,7 @@ public class SwagLabsTests {
         // Sacar una captura de pantalla
         Utils.takeScreenshot(driver, "verificarCarritoVacioCheckout3");
     }
+
 
     @After
     public void tearDown() {
