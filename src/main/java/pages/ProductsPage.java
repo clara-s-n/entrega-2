@@ -82,4 +82,19 @@ public class ProductsPage {
     public void clickCart() {
         driver.findElement(cartLogo).click();
     }
+
+    // Verificar que cada producto tiene nombre y precio
+    public boolean areProductDetailsPresent() {
+        List<WebElement> products = driver.findElements(productList);
+        boolean areDetailsPresent = true;
+        for (WebElement product : products) {
+            WebElement productName = product.findElement(By.className("inventory_item_name"));
+            WebElement productPrice = product.findElement(By.className("inventory_item_price"));
+            if (!productName.isDisplayed() || !productPrice.isDisplayed()) {
+                areDetailsPresent = false;
+                break;
+            }
+        }
+        return areDetailsPresent;
+    }
 }

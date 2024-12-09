@@ -209,6 +209,30 @@ public class SwagLabsTests {
         Utils.takeScreenshot(driver, "verificarCarritoVacioCheckout3");
     }
 
+    // Caso de prueba 7
+    @Test
+    public void verificarPaginaDeProductos() {
+        // Login
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
+        loginPage.clickLogin();
+
+        // Verificar que se vean los productos en la página de productos
+        Assert.assertTrue(productsPage.isProductListPresent());
+
+        // Verificar que se todos los productos tengan el botón de "Add to cart"
+        Assert.assertTrue(productsPage.areAddToCartButtonsPresent());
+
+        // Verificar que está presente el botón del carrito
+        Assert.assertTrue(productsPage.isCartLogoPresent());
+
+        // Verificar que los productos tienen nombre y precio
+        Assert.assertTrue(productsPage.areProductDetailsPresent());
+
+        // Sacar una captura de pantalla
+        Utils.takeScreenshot(driver, "verificarPaginaDeProductos");
+    }
+
 
     @After
     public void tearDown() {
