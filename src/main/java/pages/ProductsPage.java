@@ -12,7 +12,12 @@ public class ProductsPage {
     // Localizadores
     private By productList = By.className("inventory_item");
     private By cartLogo = By.className("shopping_cart_link");
-    private By addToCartButton = By.className("add-to-cart-sauce-labs-bike-light");
+    private By addToCartButtonBackpack = By.cssSelector("#add-to-cart-sauce-labs-backpack");
+    private By addToCartButtonBikeLight = By.cssSelector("#add-to-cart-sauce-labs-bike-light");
+    private By addToCartButtonTShirt = By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt");
+    private By addToCartButtonJacket = By.cssSelector("#add-to-cart-sauce-labs-fleece-jacket");
+    private By addToCartButtonOnesie = By.cssSelector("#add-to-cart-sauce-labs-onesie");
+    private By addToCartButtonRedTShirt = By.xpath("/html/body/div[1]/div/div/div[2]/div/div/div/div[6]/div[2]/div[2]/button");
 
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
@@ -32,13 +37,18 @@ public class ProductsPage {
 
     // Método para verificar que el botón "Add to Cart" esté presente en cada ítem
     public boolean areAddToCartButtonsPresent() {
-        List<WebElement> products = driver.findElements(productList);
-        for (WebElement product : products) {
-            List<WebElement> buttons = product.findElements(addToCartButton);
-            if (buttons.isEmpty()) {
-                return false; // Si algún producto no tiene botón, devuelve false
-            }
-        }
-        return true; // Todos los productos tienen botón
+        WebElement addToCartBackpack = driver.findElement(addToCartButtonBackpack);
+        WebElement addToCartBikeLight = driver.findElement(addToCartButtonBikeLight);
+        WebElement addToCartTShirt = driver.findElement(addToCartButtonTShirt);
+        WebElement addToCartJacket = driver.findElement(addToCartButtonJacket);
+        WebElement addToCartOnesie = driver.findElement(addToCartButtonOnesie);
+        WebElement addToCartRedTShirt = driver.findElement(addToCartButtonRedTShirt);
+
+        return addToCartBackpack.isDisplayed() &&
+                addToCartBikeLight.isDisplayed() &&
+                addToCartTShirt.isDisplayed() &&
+                addToCartJacket.isDisplayed() &&
+                addToCartOnesie.isDisplayed() &&
+                addToCartRedTShirt.isDisplayed();
     }
 }

@@ -25,14 +25,7 @@ public class SwagLabsTests {
         productsPage = new ProductsPage(driver);
     }
 
-    @Test
-    public void testLogin() {
-        // Aquí puedes agregar aserciones para verificar el resultado esperado
-        loginPage.enterUsername("standard_user");
-        loginPage.enterPassword("secret_sauce");
-        loginPage.clickLogin();
-    }
-
+    // Caso de prueba 1
     @Test
     public void verificarInicioDeSesionExitoso() {
         loginPage.enterUsername("standard_user");
@@ -42,8 +35,8 @@ public class SwagLabsTests {
         // Verificar que se vean los productos en la página de productos
         Assert.assertTrue(productsPage.isProductListPresent());
 
-        // Verificar que se vea el botón del carrito de compras
-        Assert.assertTrue(productsPage.isCartLogoPresent());
+        // Verificar que se todos los productos tengan el botón de "Add to cart"
+        Assert.assertTrue(productsPage.areAddToCartButtonsPresent());
 
         // Sacar una captura de pantalla
         Utils.takeScreenshot(driver, "verificarInicioDeSesionExitoso");
