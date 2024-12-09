@@ -51,4 +51,35 @@ public class ProductsPage {
                 addToCartOnesie.isDisplayed() &&
                 addToCartRedTShirt.isDisplayed();
     }
+
+    // Método para agregar un producto al carrito
+    public void addToCart(String product) {
+        switch (product) {
+            case "backpack":
+                driver.findElement(addToCartButtonBackpack).click();
+                break;
+            case "bike light":
+                driver.findElement(addToCartButtonBikeLight).click();
+                break;
+            case "t-shirt":
+                driver.findElement(addToCartButtonTShirt).click();
+                break;
+            case "jacket":
+                driver.findElement(addToCartButtonJacket).click();
+                break;
+            case "onesie":
+                driver.findElement(addToCartButtonOnesie).click();
+                break;
+            case "red t-shirt":
+                driver.findElement(addToCartButtonRedTShirt).click();
+                break;
+            default:
+                System.out.println("Producto no encontrado");
+        }
+    }
+
+    // Ver el carrito
+    public void clickCart() {
+        driver.findElement(cartLogo).click();
+    }
 }
