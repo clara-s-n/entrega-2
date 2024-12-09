@@ -8,10 +8,10 @@ public class CheckoutPage1 {
     private WebDriver driver;
 
     // Localizadores
-    private By firstNameField = By.id("first-name"); // Asegúrate de que este ID sea correcto
-    private By lastNameField = By.id("last-name"); // Asegúrate de que este ID sea correcto
-    private By postalCodeField = By.id("postal-code"); // Asegúrate de que este ID sea correcto
-    private By continueButton = By.cssSelector(".btn_primary"); // Asegúrate de que este selector sea correcto
+    private By firstNameField = By.id("first-name");
+    private By lastNameField = By.id("last-name");
+    private By postalCodeField = By.id("postal-code");
+    private By continueButton = By.cssSelector(".btn_primary");
 
     public CheckoutPage1(WebDriver driver) {
         this.driver = driver;

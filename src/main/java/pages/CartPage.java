@@ -68,9 +68,9 @@ public class CartPage {
         return products.isEmpty(); // Devuelve true si la lista de productos está vacía
     }
 
-    // Método para hacer clic en el botón de checkout
+    // Método para hacer click en el botón de checkout
     public void clickCheckout() {
         WebElement button = driver.findElement(checkoutButton);
-        button.click(); // Haz clic en el botón de checkout
+        button.click(); // Hace click en el botón de checkout
     }
 }

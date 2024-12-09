@@ -8,8 +8,8 @@ public class CheckoutPage3 {
     private WebDriver driver;
 
     // Localizadores
-    private By confirmationMessage = By.cssSelector(".complete-header"); // Asegúrate de que este selector sea correcto
-    private By backToProductsButton = By.cssSelector("#back-to-products"); // Asegúrate de que este selector sea correcto
+    private By confirmationMessage = By.cssSelector(".complete-header");
+    private By backToProductsButton = By.cssSelector("#back-to-products");
 
     public CheckoutPage3(WebDriver driver) {
         this.driver = driver;
